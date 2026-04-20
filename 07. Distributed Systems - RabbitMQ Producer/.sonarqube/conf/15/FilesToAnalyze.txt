@@ -1,0 +1,2 @@
+﻿D:\Workspace\Pacagroup.Ecommerce\Pacagroup.Ecommerce.Application.DTO\CustomersDto.cs
+D:\Workspace\Pacagroup.Ecommerce\Pacagroup.Ecommerce.Application.DTO\UsersDto.cs

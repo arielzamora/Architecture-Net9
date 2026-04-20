@@ -1,0 +1,29 @@
+<Solution>
+  <Folder Name="/Aplication/">
+    <Project Path="Pacagroup.Ecommerce.Application.Dto/Pacagroup.Ecommerce.Application.Dto.csproj" />
+    <Project Path="Pacagroup.Ecommerce.Application.Interface/Pacagroup.Ecommerce.Application.Interface.csproj" />
+    <Project Path="Pacagroup.Ecommerce.Application.Main/Pacagroup.Ecommerce.Application.Main.csproj" />
+    <Project Path="Pacagroup.Ecommerce.Application.Validator/Pacagroup.Ecommerce.Application.Validator.csproj" />
+  </Folder>
+  <Folder Name="/Dominio/">
+    <Project Path="Pacagroup.Ecommerce.Domain.Core/Pacagroup.Ecommerce.Domain.Core.csproj" />
+    <Project Path="Pacagroup.Ecommerce.Domain.Entity/Pacagroup.Ecommerce.Domain.Entity.csproj" />
+    <Project Path="Pacagroup.Ecommerce.Domain.Interface/Pacagroup.Ecommerce.Domain.Interface.csproj" />
+  </Folder>
+  <Folder Name="/Infraestructura/">
+    <Project Path="Pacagroup.Ecommerce.Infrastructure.Data/Pacagroup.Ecommerce.Infrastructure.Data.csproj" />
+    <Project Path="Pacagroup.Ecommerce.Infrastructure.Interface/Pacagroup.Ecommerce.Infrastructure.Interface.csproj" />
+    <Project Path="Pacagroup.Ecommerce.Infrastructure.Repository/Pacagroup.Ecommerce.Infrastructure.Repository.csproj" />
+  </Folder>
+  <Folder Name="/Prueba/">
+    <Project Path="Pacagroup.Ecommerce.Application.IntegrationTest/Pacagroup.Ecommerce.Application.IntegrationTest.fsproj" />
+  </Folder>
+  <Folder Name="/Servicio/">
+    <Project Path="Pacagroup.Ecommerce.Services.WebApi/Pacagroup.Ecommerce.Services.WebApi.csproj" />
+  </Folder>
+  <Folder Name="/Transversal/">
+    <Project Path="Pacagroup.Ecommerce.Transversal.Common/Pacagroup.Ecommerce.Transversal.Common.csproj" />
+    <Project Path="Pacagroup.Ecommerce.Transversal.Logging/Pacagroup.Ecommerce.Transversal.Logging.csproj" />
+    <Project Path="Pacagroup.Ecommerce.Transversal.Mapper/Pacagroup.Ecommerce.Transversal.Mapper.csproj" />
+  </Folder>
+</Solution>

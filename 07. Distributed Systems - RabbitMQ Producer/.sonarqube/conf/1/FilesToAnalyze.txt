@@ -1,0 +1,4 @@
+﻿D:\Workspace\Pacagroup.Ecommerce\Pacagroup.Ecommerce.Transversal.Common\IAppLogger.cs
+D:\Workspace\Pacagroup.Ecommerce\Pacagroup.Ecommerce.Transversal.Common\Response.cs
+D:\Workspace\Pacagroup.Ecommerce\Pacagroup.Ecommerce.Transversal.Common\ResponseGeneric.cs
+D:\Workspace\Pacagroup.Ecommerce\Pacagroup.Ecommerce.Transversal.Common\ResponsePagination.cs

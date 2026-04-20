@@ -1,0 +1,2 @@
+﻿D:\Workspace\Pacagroup.Ecommerce\Pacagroup.Ecommerce.Domain.Core\CustomersDomain.cs
+D:\Workspace\Pacagroup.Ecommerce\Pacagroup.Ecommerce.Domain.Core\UsersDomain.cs

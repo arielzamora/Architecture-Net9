@@ -1,0 +1,2 @@
+﻿D:\Workspace\Pacagroup.Ecommerce\Pacagroup.Ecommerce.Application.Interface\ICustomersApplication.cs
+D:\Workspace\Pacagroup.Ecommerce\Pacagroup.Ecommerce.Application.Interface\IUsersApplication.cs

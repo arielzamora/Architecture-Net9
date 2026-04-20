@@ -1,0 +1,4 @@
+﻿D:\Workspace\Pacagroup.Ecommerce\Pacagroup.Ecommerce.Infrastructure.Interface\ICustomersRepository.cs
+D:\Workspace\Pacagroup.Ecommerce\Pacagroup.Ecommerce.Infrastructure.Interface\IGenericRepository.cs
+D:\Workspace\Pacagroup.Ecommerce\Pacagroup.Ecommerce.Infrastructure.Interface\IUnitOfWork.cs
+D:\Workspace\Pacagroup.Ecommerce\Pacagroup.Ecommerce.Infrastructure.Interface\IUsersRepository.cs

@@ -1,0 +1,14 @@
+﻿D:\Workspace\Pacagroup.Ecommerce\Pacagroup.Ecommerce.Application.Test\CustomWebApplicationFactory.cs
+D:\Workspace\Pacagroup.Ecommerce\Pacagroup.Ecommerce.Application.Test\UsersApplicationTest.cs
+C:\Users\ALEX\.nuget\packages\microsoft.net.test.sdk\17.3.1\build\netcoreapp2.1\Microsoft.NET.Test.Sdk.Program.cs
+C:\Users\ALEX\.nuget\packages\microsoft.testplatform.testhost\17.3.1\build\netcoreapp2.1\x64\testhost.exe
+C:\Users\ALEX\.nuget\packages\microsoft.testplatform.testhost\17.3.1\build\netcoreapp2.1\x64\testhost.dll
+D:\Workspace\Pacagroup.Ecommerce\Pacagroup.Ecommerce.Application.Test\appsettings.json
+C:\Users\ALEX\.nuget\packages\mstest.testadapter\2.2.10\build\_common\es\Microsoft.TestPlatform.AdapterUtilities.resources.dll
+C:\Users\ALEX\.nuget\packages\mstest.testadapter\2.2.10\build\_common\es\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll
+C:\Users\ALEX\.nuget\packages\mstest.testadapter\2.2.10\build\_common\es\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll
+C:\Users\ALEX\.nuget\packages\mstest.testadapter\2.2.10\build\_common\es\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll
+C:\Users\ALEX\.nuget\packages\mstest.testadapter\2.2.10\build\_common\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\ALEX\.nuget\packages\mstest.testadapter\2.2.10\build\_common\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\ALEX\.nuget\packages\mstest.testadapter\2.2.10\build\net5.0\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\ALEX\.nuget\packages\mstest.testadapter\2.2.10\build\net5.0\Microsoft.TestPlatform.AdapterUtilities.dll
