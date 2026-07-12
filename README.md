@@ -17,8 +17,8 @@ El repositorio se divide en módulos numerados que te guiarán paso a paso desde
 | **01** | 🧪 [Unit Testing](./01.%20Validation%20and%20Quality%20-%20Unit%20Testing) | Estrategias de pruebas unitarias para validar la lógica del dominio de forma aislada. |
 | **02** | 📌 [API Versioning](./02.%20API%20Design%20-%20API%20Versioning) | Versionamiento semántico y control de versiones en APIs HTTP. |
 | **02** | 📄 [Pagination](./02.%20API%20Design%20-%20Pagination) | Estrategias eficientes de paginación para optimizar payloads en servicios REST. |
-| **03** | 🔍 [Entity Auditing](./03.%20Cross-Cutting Concerns%20-%20Entity%20Auditing) | Registro automático de auditoría de creación y modificación en persistencia de datos. |
-| **03** | 🚨 [Exception Handling Middleware](./03.%20Cross-Cutting Concerns%20-%20Exception%20Handling%20Middleware) | Middleware global de excepciones para homogeneizar respuestas de error de API. |
+| **03** | 🔍 [Entity Auditing](./03.%20Cross-Cutting%20Concerns%20-%20Entity%20Auditing) | Registro automático de auditoría de creación y modificación en persistencia de datos. |
+| **03** | 🚨 [Exception Handling Middleware](./03.%20Cross-Cutting%20Concerns%20-%20Exception%20Handling%20Middleware) | Middleware global de excepciones para homogeneizar respuestas de error de API. |
 | **04** | 🏥 [Health Checks](./04.%20Observability%20-%20Health%20Checks) | Monitoreo y diagnóstico del estado de salud de la aplicación en tiempo de ejecución. |
 | **04** | ⚡ [Redis Health Check](./04.%20Observability%20-%20Redis%20Health%20Check) | Validación de conectividad y estado de salud sobre caché distribuida en Redis. |
 | **05** | 🛑 [Rate Limiting](./05.%20Security%20and%20Traffic%20Control%20-%20Rate%20Limiting) | Control de flujo y protección contra abuso de endpoints mediante limitación de peticiones. |
@@ -61,7 +61,7 @@ Para comprender el *porqué* detrás de las decisiones técnicas y estructurales
 Si deseas profundizar en la implementación técnica de los bloques más complejos, revisa la documentación interna:
 
 *   **[Análisis de CQRS y MediatR (Carpeta 06)](./06.%20Patterns%20CQRS%20-%20CQRS%20Mediator%20Pipeline/DETALLE_TECNICO.md)**: Explicación de Handlers, Validaciones y Primary Constructors.
-*   **[Sistemas Distribuidos y RabbitMQ (Carpeta 07)](./07.%20Distributed Systems%20-%20RabbitMQ%20Consumer/DETALLE_TECNICO.md)**: Configuración de consumidores, reintentos y resiliencia.
+*   **[Sistemas Distribuidos y RabbitMQ (Carpeta 07)](./07.%20Distributed%20Systems%20-%20RabbitMQ%20Consumer/DETALLE_TECNICO.md)**: Configuración de consumidores, reintentos y resiliencia.
 
 ---
 *Última actualización: Julio de 2026*
