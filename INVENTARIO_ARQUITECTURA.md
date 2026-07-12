@@ -1,6 +1,6 @@
 # Inventario de Arquitectura
 
-Este documento clasifica las soluciones y pruebas de concepto del repositorio en categorías según su capacidad técnica, reflejando el orden de complejidad, desde el proyecto base inicial hasta la arquitectura objetivo final (Target).
+Este documento clasifica las soluciones y pruebas de concepto del repositorio en categorías según su capacidad técnica, reflejando el orden de complejidad de cada patrón y práctica arquitectónica implementada en .NET 9.
 
 | Nombre Original | Nombre Nuevo (Carpeta) | Responsabilidad Técnica Principal |
 | :--- | :--- | :--- |
@@ -22,4 +22,3 @@ Este documento clasifica las soluciones y pruebas de concepto del repositorio en
 | `Pacagroup.Ecommerce_v42_rabbitProducer` | `07. Distributed Systems - RabbitMQ Producer` | 07. Distributed Systems - Messaging |
 | `Pacagroup.Ecommerce.Consumer_rabittConsumer` | `07. Distributed Systems - RabbitMQ Consumer` | 07. Distributed Systems - Messaging |
 | `Pacagroup.Ecommerce-v60_servicesBus` | `07. Distributed Systems - Service Bus Integration` | 07. Distributed Systems - Messaging |
-| `Arquitectura de Referencia-arch-solution` | `99. Target Architecture - Arquitectura de Referencia` | 99. Target Architecture y Arquitectura Final |

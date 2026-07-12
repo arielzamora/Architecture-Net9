@@ -1,9 +1,9 @@
-﻿# Documento TÃ©cnico: PatrÃ³n CQRS - Mediator Pipeline
+﻿# Documento Técnico: Patrón CQRS - Mediator Pipeline
 
-## 1. InyecciÃ³n de Dependencias (DI)
-El cÃ³digo responsable de inyectar MediatR y orquestar el descubrimiento dinÃ¡mico de todos los Handlers (Comandos y Queries) se encuentra en el archivo `Pacagroup.Ecommerce.Application.Main/ConfigureServices.cs`.
+## 1. Inyección de Dependencias (DI)
+El código responsable de inyectar MediatR y orquestar el descubrimiento dinámico de todos los Handlers (Comandos y Queries) se encuentra en el archivo `Pacagroup.Ecommerce.Application.Main/ConfigureServices.cs`.
 
-AsÃ­ se estructura exactamente el registro:
+Así se estructura exactamente el registro:
 ```csharp
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
@@ -15,15 +15,15 @@ namespace Pacagroup.Ecommerce.Application.UseCases
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             // --- REGISTRO DE MEDIATR ---
-            // Escanea y registra automÃ¡ticamente todos los IRequestHandler
-            // dentro del ensamblado actual de forma dinÃ¡mica.
+            // Escanea y registra automáticamente todos los IRequestHandler
+            // dentro del ensamblado actual de forma dinámica.
             services.AddMediatR(cfg => {
                 cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
             });
             
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             
-            // ... (Registro explÃ­cito de otros servicios de la aplicaciÃ³n)
+            // ... (Registro explícito de otros servicios de la aplicación)
             return services;
         }
     }
@@ -33,7 +33,7 @@ namespace Pacagroup.Ecommerce.Application.UseCases
 ---
 
 ## 2. Flujo del Pipeline 
-MediatR actÃºa como un embudo (pipeline) que separa al invocador de la lÃ³gica de negocio final. Aunque en este proyecto puntual la inclusiÃ³n de `ValidationBehavior` y `LoggingBehavior` se profundizan en otros bloques del repositorio, lÃ³gicamente un pipeline maduro atraviesa las siguientes capas antes de llegar a la manipulaciÃ³n de base de datos (`CreateCustomerHandler`).
+MediatR actúa como un embudo (pipeline) que separa al invocador de la lógica de negocio final. Aunque en este proyecto puntual la inclusión de `ValidationBehavior` y `LoggingBehavior` se profundizan en otros bloques del repositorio, lógicamente un pipeline maduro atraviesa las siguientes capas antes de llegar a la manipulación de base de datos (`CreateCustomerHandler`).
 
 ```mermaid
 sequenceDiagram
@@ -49,15 +49,15 @@ sequenceDiagram
     
     Bus->>Log: Handle()
     activate Log
-    Log->>Log: Inicia cronÃ³metro y TraceId
+    Log->>Log: Inicia cronómetro y TraceId
     
     Log->>Val: Next()
     activate Val
     Val->>Val: Intercepta y valida sintaxis (FluentVal)
     
-    Val->>Hnd: Next() (VÃ¡lido)
+    Val->>Hnd: Next() (Válido)
     activate Hnd
-    Hnd->>Hnd: LÃ³gica Core de Negocio
+    Hnd->>Hnd: Lógica Core de Negocio
     Hnd-->>Val: Retorna Response <T>
     deactivate Hnd
     
@@ -74,7 +74,7 @@ sequenceDiagram
 
 ---
 
-## 3. PatrÃ³n Repositorio
+## 3. Patrón Repositorio
 Para aislar la dependencia a la capa de infraestructura, el CQRS Handler no inyecta el `ApplicationDbContext` directamente. En su lugar, el `CreateCustomerHandler.cs` delega esto por completo mediante el UnitOfWork:
 
 ```csharp
@@ -91,14 +91,14 @@ public class CreateCustomerHandler : IRequestHandler<CreateCustomerCommand, Resp
     
     public async Task<Response<bool>> Handle(...)
     {
-        // Se abstrae la tecnologÃ­a detrÃ¡s de IUnitOfWork y ICustomersRepository
+        // Se abstrae la tecnología detrás de IUnitOfWork y ICustomersRepository
         response.Data = await _unitOfWork.Customers.InsertAsync(customer);
         return response;
     }
 }
 ```
 
-Si saltamos hacia `Pacagroup.Ecommerce.Persistence/Repositories/UnitOfWork.cs`, descubrimos que este patrÃ³n Repositorio estÃ¡ fuertemente acoplado en el fondo a Entity Framework Core (no a Dapper), inyectando el contexto de EF:
+Si saltamos hacia `Pacagroup.Ecommerce.Persistence/Repositories/UnitOfWork.cs`, descubrimos que este patrón Repositorio está fuertemente acoplado en el fondo a Entity Framework Core (no a Dapper), inyectando el contexto de EF:
 ```csharp
 // En UnitOfWork.cs
 public class UnitOfWork : IUnitOfWork
@@ -114,7 +114,7 @@ public class UnitOfWork : IUnitOfWork
     
     public async Task<int> Save(CancellationToken cancellationToken)
     {
-        // Disparo Ãºnico de la transacciÃ³n a SQL
+        // Disparo único de la transacción a SQL
         return await _applicationDbContext.SaveChangesAsync(cancellationToken);
     }
 }
@@ -124,10 +124,10 @@ public class UnitOfWork : IUnitOfWork
 
 ## 4. Tip .NET 9 Avanzado (Impacto de Native AOT)
 > [!WARNING]
-> En .NET 9, el ecosistema de microservicios estÃ¡ migrando activamente a **Native AOT** (Ahead-of-Time compilation) para habilitar aplicaciones que arranquen en milisegundos con uso nulo del motor JIT. 
+> En .NET 9, el ecosistema de microservicios está migrando activamente a **Native AOT** (Ahead-of-Time compilation) para habilitar aplicaciones que arranquen en milisegundos con uso nulo del motor JIT. 
 
 **Problema:**  
-El cÃ³digo actual usa `Assembly.GetExecutingAssembly()` y Reflection dinÃ¡mica en tiempo de ejecuciÃ³n para escanear y encontrar quiÃ©n implementa `IRequestHandler`. AOT es enemigo por defecto de la reflexiÃ³n; en la compilaciÃ³n nativa los tipos no referenciados explÃ­citamente se truncan (Trimming), provocando que este cÃ³digo falle en producciÃ³n o no logre encontrar tus Handlers.
+El código actual usa `Assembly.GetExecutingAssembly()` y Reflection dinámica en tiempo de ejecución para escanear y encontrar quién implementa `IRequestHandler`. AOT es enemigo por defecto de la reflexión; en la compilación nativa los tipos no referenciados explícitamente se truncan (Trimming), provocando que este código falle en producción o no logre encontrar tus Handlers.
 
-**SoluciÃ³n Alternativa 100% C# .NET 9:**  
-Evitar la recolecciÃ³n estÃ¡tica y pasar a la **generaciÃ³n de cÃ³digo fuente (Source Generators)** que hace el mapeo en tiempo de diseÃ±o. En la comunidad .NET avanzada, se recomienda reemplazar la librerÃ­a tradicional genÃ©rica `MediatR` por **`Mediator` (de Martinoth)**, un clon directo construido especÃ­ficamente para ser compatible con AOT. Ã‰ste inyecta en el compilador la conexiÃ³n entre los Commands y los Handlers sin usar Reflection. Esto hace que tu Pipeline CQRS arranque notablemente mÃ¡s rÃ¡pido y consuma menos memoria en los pods distribuidos (ideal para la Arquitectura de Referencia).
+**Solución Alternativa 100% C# .NET 9:**  
+Evitar la recolección estática y pasar a la **generación de código fuente (Source Generators)** que hace el mapeo en tiempo de diseño. En la comunidad .NET avanzada, se recomienda reemplazar la librería tradicional genérica `MediatR` por **`Mediator` (de Martinoth)**, un clon directo construido específicamente para ser compatible con AOT. Éste inyecta en el compilador la conexión entre los Commands y los Handlers sin usar Reflection. Esto hace que tu Pipeline CQRS arranque notablemente más rápido y consuma menos memoria en los pods distribuidos (ideal para la Arquitectura de Referencia).

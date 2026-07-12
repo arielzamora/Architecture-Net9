@@ -1,10 +1,10 @@
-﻿# Detalle TÃ©cnico: Referencia para MigraciÃ³n a .NET 9
+﻿# Detalle Técnico: Referencia para Migración a .NET 9
 
-Este documento ha sido extraÃ­do directamente del cÃ³digo fuente real de los proyectos y sirve como referencia arquitectÃ³nica y tÃ©cnica para una migraciÃ³n limpia hacia **.NET 9**.
+Este documento ha sido extraído directamente del código fuente real de los proyectos y sirve como referencia arquitectónica y técnica para una migración limpia hacia **.NET 9**.
 
-## 1. InyecciÃ³n de Dependencias (MediatR y Dapper)
+## 1. Inyección de Dependencias (MediatR y Dapper)
 
-La configuraciÃ³n de servicios permite centralizar las dependencias por capas. 
+La configuración de servicios permite centralizar las dependencias por capas. 
 
 **MediatR:** (Registrado en `Application.Main\ConfigureServices.cs`)
 ```csharp
@@ -43,10 +43,10 @@ public static IApplicationBuilder AddMiddleware(this IApplicationBuilder app)
     return app.UseMiddleware<GlobalExceptionHandler>();
 }
 ```
-Esto permite centralizar el manejo de excepciones (como `FluentValidationException` o errores controlados del sistema) e inyectar detalles formateados sin ensuciar los controladores web con mÃºltiples bloques `try-catch`.
+Esto permite centralizar el manejo de excepciones (como `FluentValidationException` o errores controlados del sistema) e inyectar detalles formateados sin ensuciar los controladores web con múltiples bloques `try-catch`.
 
-## 3. PatrÃ³n Repositorio vs Dapper
-Se usa el patrÃ³n Repositorio para encapsular la lÃ³gica de persistencia, pero se inyecta la abstracciÃ³n de base de datos a travÃ©s de `DapperContext`. Este patrÃ³n aÃ­sla las consultas de alta velocidad y usa `IDbConnection` para operaciones de lectura/ejecuciÃ³n directa superior a EntityFramework.
+## 3. Patrón Repositorio vs Dapper
+Se usa el patrón Repositorio para encapsular la lógica de persistencia, pero se inyecta la abstracción de base de datos a través de `DapperContext`. Este patrón aísla las consultas de alta velocidad y usa `IDbConnection` para operaciones de lectura/ejecución directa superior a EntityFramework.
 
 **Comportamiento en `CustomersRepository`:**
 ```csharp
@@ -56,7 +56,7 @@ public class CustomersRepository : ICustomersRepository
 
     public IEnumerable<Customer> GetAll()
     {
-        // El DapperContext crea una conexiÃ³n ultra-ligera en el acto
+        // El DapperContext crea una conexión ultra-ligera en el acto
         using (var connection = _context.CreateConnection())
         {
             var query = "CustomersList";
@@ -67,8 +67,8 @@ public class CustomersRepository : ICustomersRepository
 }
 ```
 
-## 4. ConfiguraciÃ³n de RabbitMQ (Sistemas Distribuidos)
-La integraciÃ³n con RabbitMQ se monta usando la librerÃ­a **MassTransit**, montÃ¡ndose mÃ¡gicamente sobre un `BackgroundWorker` / `IHostedService` estÃ¡ndar en consolas y servicios Worker.
+## 4. Configuración de RabbitMQ (Sistemas Distribuidos)
+La integración con RabbitMQ se monta usando la librería **MassTransit**, montándose mágicamente sobre un `BackgroundWorker` / `IHostedService` estándar en consolas y servicios Worker.
 
 **Setup del Canal y la Cola (`Program.cs`):**
 ```csharp
@@ -80,7 +80,7 @@ await Host.CreateDefaultBuilder(args)
         {
             x.AddConsumer<DiscountCreatedConsumer>();
             
-            // AbstracciÃ³n final del Broker (ConfiguraciÃ³n y canal)
+            // Abstracción final del Broker (Configuración y canal)
             x.UsingRabbitMq((context, cfg) =>
             {
                 cfg.Host("localhost", "/", h =>
@@ -93,14 +93,14 @@ await Host.CreateDefaultBuilder(args)
         });
     })
     .Build()
-    .RunAsync(); // ActÃºa como BackgroundService infinito
+    .RunAsync(); // Actúa como BackgroundService infinito
 ```
 
 ## Enfoque .NET 9: Primary Constructors
-Al migrar a **.NET 9**, uno de los principales objetivos es la limpieza agresiva del cÃ³digo repetitivo de inyecciÃ³n. La actual estructura genera demasiada verbosidad en `MediatR` y patron Repositorio.
+Al migrar a **.NET 9**, uno de los principales objetivos es la limpieza agresiva del código repetitivo de inyección. La actual estructura genera demasiada verbosidad en `MediatR` y patron Repositorio.
 
 **Antes (.NET 6/7/8):**
-La inyecciÃ³n duplicaba las sentencias (propiedad, constructor, asignaciÃ³n).
+La inyección duplicaba las sentencias (propiedad, constructor, asignación).
 ```csharp
 public class GetCustomerHandler : IRequestHandler<GetCustomerQuery, Response<CustomerDto>>
 {
@@ -116,12 +116,12 @@ public class GetCustomerHandler : IRequestHandler<GetCustomerQuery, Response<Cus
 }
 ```
 
-**Nuevo estÃ¡ndar en .NET 9 (Primary Constructors):**
-Reduce el cÃ³digo y elimina la ceremonia, unificando inyecciÃ³n y constructor en la declaraciÃ³n de la clase.
+**Nuevo estándar en .NET 9 (Primary Constructors):**
+Reduce el código y elimina la ceremonia, unificando inyección y constructor en la declaración de la clase.
 ```csharp
 public class GetCustomerHandler(IUnitOfWork unitOfWork, IMapper mapper) : IRequestHandler<GetCustomerQuery, Response<CustomerDto>>
 {
-    // 'unitOfWork' y 'mapper' estÃ¡n disponibles en toda la clase inmediatamente
+    // 'unitOfWork' y 'mapper' están disponibles en toda la clase inmediatamente
     public async Task<Response<CustomerDto>> Handle(GetCustomerQuery request, CancellationToken cancellationToken)
     {
         var response = await unitOfWork.Customers.GetAsync(request.CustomerId);

@@ -1,22 +1,22 @@
 ﻿# Architecture Decision Records (ADR)
 
-Este directorio contiene los registros de las decisiones arquitectÃ³nicas clave tomadas para el proyecto **Pacagroup Ecommerce**.
+Este directorio contiene los registros de las decisiones arquitectónicas clave tomadas para el proyecto **Pacagroup Ecommerce**.
 
 ## Estructura de un ADR
-Cada documento sigue el estÃ¡ndar de Michael Nygard:
-- **TÃ­tulo**: Nombre corto de la decisiÃ³n.
-- **Contexto**: El problema o escenario que motivÃ³ la decisiÃ³n.
-- **DecisiÃ³n**: La soluciÃ³n tÃ©cnica adoptada.
-- **Consecuencias**: El impacto (positivo y negativo) de dicha decisiÃ³n en el sistema.
+Cada documento sigue el estándar de Michael Nygard:
+- **Título**: Nombre corto de la decisión.
+- **Contexto**: El problema o escenario que motivó la decisión.
+- **Decisión**: La solución técnica adoptada.
+- **Consecuencias**: El impacto (positivo y negativo) de dicha decisión en el sistema.
 
-## Ãndice de Decisiones
+## Índice de Decisiones
 
-| ID | TÃ­tulo | Estado | VÃ­nculo |
+| ID | Título | Estado | Vínculo |
 | --- | --- | --- | --- |
-| **001** | Uso de PatrÃ³n CQRS y MediatR | Aceptado | [ADR-001](./ADR-001_CQRS_y_MediatR.md) |
-| **002** | AdopciÃ³n de Dapper para Acceso UltrarrÃ¡pido | Aceptado | [ADR-002](./ADR-002_Dapper_Data_Access.md) |
-| **003** | ComunicaciÃ³n AsÃ­ncrona con RabbitMQ | Aceptado | [ADR-003](./ADR-003_RabbitMQ_y_Mensajeria.md) |
-| **004** | MigraciÃ³n EstratÃ©gica a .NET 9 | Propuesto | [ADR-004](./ADR-004_Migracion_NET_9.md) |
+| **001** | Uso de Patrón CQRS y MediatR | Aceptado | [ADR-001](./ADR-001_CQRS_y_MediatR.md) |
+| **002** | Adopción de Dapper para Acceso Ultrarrápido | Aceptado | [ADR-002](./ADR-002_Dapper_Data_Access.md) |
+| **003** | Comunicación Asíncrona con RabbitMQ | Aceptado | [ADR-003](./ADR-003_RabbitMQ_y_Mensajeria.md) |
+| **004** | Migración Estratégica a .NET 9 | Propuesto | [ADR-004](./ADR-004_Migracion_NET_9.md) |
 
 ---
-*Para mÃ¡s detalles sobre la implementaciÃ³n tÃ©cnica de estas decisiones, consultar los archivos `DETALLE_TECNICO.md` en las carpetas de patrones correspondientes.*
+*Para más detalles sobre la implementación técnica de estas decisiones, consultar los archivos `DETALLE_TECNICO.md` en las carpetas de patrones correspondientes.*
